@@ -1,0 +1,466 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4C2298862BE98B624492303A /* Pods_Dory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8375E9C9C5BDD4B1F2954C /* Pods_Dory.framework */; };
+		6613533D25164A8600B51F14 /* CycleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6613533C25164A8600B51F14 /* CycleModel.swift */; };
+		66427A0924F2674200D08F43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66427A0824F2674200D08F43 /* AppDelegate.swift */; };
+		66427A0B24F2674200D08F43 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66427A0A24F2674200D08F43 /* SceneDelegate.swift */; };
+		66427A0D24F2674200D08F43 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66427A0C24F2674200D08F43 /* MainViewController.swift */; };
+		66427A1224F2674300D08F43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66427A1124F2674300D08F43 /* Assets.xcassets */; };
+		66427A1D24F26ED500D08F43 /* UIGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66427A1C24F26ED500D08F43 /* UIGradientView.swift */; };
+		6650416F2513C24100011D38 /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6650416E2513C24100011D38 /* K.swift */; };
+		66721E2F24F511420062A998 /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66721E2E24F511420062A998 /* CircleProgressView.swift */; };
+		6673FD4B24FFC46E00C4D53E /* CRButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673FD4A24FFC46E00C4D53E /* CRButton.swift */; };
+		6673FD4F25004BE400C4D53E /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6673FD4E25004BE400C4D53E /* UIView+Extensions.swift */; };
+		669994962504479F00AFC1E8 /* FontTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669994952504479F00AFC1E8 /* FontTypes.swift */; };
+		6699949B2505AD9D00AFC1E8 /* MainMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699949A2505AD9D00AFC1E8 /* MainMenuButton.swift */; };
+		66A3B30925156954001FB0DF /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A3B30825156954001FB0DF /* MainTabBarController.swift */; };
+		66A3B30C251569E8001FB0DF /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A3B30B251569E8001FB0DF /* CalendarViewController.swift */; };
+		66F0E74124F7FE8000556C59 /* Cycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F0E74024F7FE8000556C59 /* Cycle.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4732403254631ED82A2446CB /* Pods-Dory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dory.release.xcconfig"; path = "Target Support Files/Pods-Dory/Pods-Dory.release.xcconfig"; sourceTree = "<group>"; };
+		6613533C25164A8600B51F14 /* CycleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleModel.swift; sourceTree = "<group>"; };
+		66427A0524F2674200D08F43 /* Dory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dory.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		66427A0824F2674200D08F43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		66427A0A24F2674200D08F43 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		66427A0C24F2674200D08F43 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		66427A1124F2674300D08F43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		66427A1624F2674300D08F43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66427A1C24F26ED500D08F43 /* UIGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGradientView.swift; sourceTree = "<group>"; };
+		6650416E2513C24100011D38 /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
+		66721E2E24F511420062A998 /* CircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
+		6673FD4A24FFC46E00C4D53E /* CRButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRButton.swift; sourceTree = "<group>"; };
+		6673FD4E25004BE400C4D53E /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		669994952504479F00AFC1E8 /* FontTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTypes.swift; sourceTree = "<group>"; };
+		6699949A2505AD9D00AFC1E8 /* MainMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuButton.swift; sourceTree = "<group>"; };
+		66A3B30825156954001FB0DF /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		66A3B30B251569E8001FB0DF /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		66F0E74024F7FE8000556C59 /* Cycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cycle.swift; sourceTree = "<group>"; };
+		9B8375E9C9C5BDD4B1F2954C /* Pods_Dory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B37EF362280BB931D22853E6 /* Pods-Dory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dory.debug.xcconfig"; path = "Target Support Files/Pods-Dory/Pods-Dory.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		66427A0224F2674200D08F43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C2298862BE98B624492303A /* Pods_Dory.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0308DC2C5ED6818C78A10CDD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B8375E9C9C5BDD4B1F2954C /* Pods_Dory.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		664279FC24F2674200D08F43 = {
+			isa = PBXGroup;
+			children = (
+				66427A0724F2674200D08F43 /* Dory */,
+				66427A0624F2674200D08F43 /* Products */,
+				D3152E0999C6223108A75A46 /* Pods */,
+				0308DC2C5ED6818C78A10CDD /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		66427A0624F2674200D08F43 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				66427A0524F2674200D08F43 /* Dory.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		66427A0724F2674200D08F43 /* Dory */ = {
+			isa = PBXGroup;
+			children = (
+				66427A0824F2674200D08F43 /* AppDelegate.swift */,
+				66427A0A24F2674200D08F43 /* SceneDelegate.swift */,
+				66427A1124F2674300D08F43 /* Assets.xcassets */,
+				66427A1624F2674300D08F43 /* Info.plist */,
+				669994992505AD5E00AFC1E8 /* MainMenuButton */,
+				66F0E74224F80DCC00556C59 /* Models */,
+				66427A1F24F3E46200D08F43 /* Controllers */,
+				66427A1E24F3E44500D08F43 /* Utilities */,
+			);
+			path = Dory;
+			sourceTree = "<group>";
+		};
+		66427A1E24F3E44500D08F43 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				66721E2E24F511420062A998 /* CircleProgressView.swift */,
+				66427A1C24F26ED500D08F43 /* UIGradientView.swift */,
+				6673FD4A24FFC46E00C4D53E /* CRButton.swift */,
+				6673FD4E25004BE400C4D53E /* UIView+Extensions.swift */,
+				669994952504479F00AFC1E8 /* FontTypes.swift */,
+				6650416E2513C24100011D38 /* K.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		66427A1F24F3E46200D08F43 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				66A3B30825156954001FB0DF /* MainTabBarController.swift */,
+				66427A0C24F2674200D08F43 /* MainViewController.swift */,
+				66A3B30B251569E8001FB0DF /* CalendarViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		669994992505AD5E00AFC1E8 /* MainMenuButton */ = {
+			isa = PBXGroup;
+			children = (
+				6699949A2505AD9D00AFC1E8 /* MainMenuButton.swift */,
+			);
+			path = MainMenuButton;
+			sourceTree = "<group>";
+		};
+		66F0E74224F80DCC00556C59 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				66F0E74024F7FE8000556C59 /* Cycle.swift */,
+				6613533C25164A8600B51F14 /* CycleModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D3152E0999C6223108A75A46 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B37EF362280BB931D22853E6 /* Pods-Dory.debug.xcconfig */,
+				4732403254631ED82A2446CB /* Pods-Dory.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		66427A0424F2674200D08F43 /* Dory */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66427A1924F2674300D08F43 /* Build configuration list for PBXNativeTarget "Dory" */;
+			buildPhases = (
+				9C396BA2A2943353219EEE34 /* [CP] Check Pods Manifest.lock */,
+				66427A0124F2674200D08F43 /* Sources */,
+				66427A0224F2674200D08F43 /* Frameworks */,
+				66427A0324F2674200D08F43 /* Resources */,
+				4BE9C28B6E6C7F627E28E866 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Dory;
+			productName = Dory;
+			productReference = 66427A0524F2674200D08F43 /* Dory.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		664279FD24F2674200D08F43 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1160;
+				LastUpgradeCheck = 1200;
+				ORGANIZATIONNAME = "itay gervash";
+				TargetAttributes = {
+					66427A0424F2674200D08F43 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+				};
+			};
+			buildConfigurationList = 66427A0024F2674200D08F43 /* Build configuration list for PBXProject "Dory" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 664279FC24F2674200D08F43;
+			productRefGroup = 66427A0624F2674200D08F43 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				66427A0424F2674200D08F43 /* Dory */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		66427A0324F2674200D08F43 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66427A1224F2674300D08F43 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4BE9C28B6E6C7F627E28E866 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dory/Pods-Dory-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dory/Pods-Dory-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dory/Pods-Dory-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9C396BA2A2943353219EEE34 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Dory-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		66427A0124F2674200D08F43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66427A0D24F2674200D08F43 /* MainViewController.swift in Sources */,
+				66427A0924F2674200D08F43 /* AppDelegate.swift in Sources */,
+				669994962504479F00AFC1E8 /* FontTypes.swift in Sources */,
+				66427A1D24F26ED500D08F43 /* UIGradientView.swift in Sources */,
+				6673FD4F25004BE400C4D53E /* UIView+Extensions.swift in Sources */,
+				6699949B2505AD9D00AFC1E8 /* MainMenuButton.swift in Sources */,
+				6613533D25164A8600B51F14 /* CycleModel.swift in Sources */,
+				66721E2F24F511420062A998 /* CircleProgressView.swift in Sources */,
+				66A3B30925156954001FB0DF /* MainTabBarController.swift in Sources */,
+				6673FD4B24FFC46E00C4D53E /* CRButton.swift in Sources */,
+				66F0E74124F7FE8000556C59 /* Cycle.swift in Sources */,
+				6650416F2513C24100011D38 /* K.swift in Sources */,
+				66A3B30C251569E8001FB0DF /* CalendarViewController.swift in Sources */,
+				66427A0B24F2674200D08F43 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		66427A1724F2674300D08F43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		66427A1824F2674300D08F43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		66427A1A24F2674300D08F43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B37EF362280BB931D22853E6 /* Pods-Dory.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DMNW5WHDHR;
+				INFOPLIST_FILE = Dory/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gervash.Dory;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		66427A1B24F2674300D08F43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4732403254631ED82A2446CB /* Pods-Dory.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DMNW5WHDHR;
+				INFOPLIST_FILE = Dory/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gervash.Dory;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		66427A0024F2674200D08F43 /* Build configuration list for PBXProject "Dory" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66427A1724F2674300D08F43 /* Debug */,
+				66427A1824F2674300D08F43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		66427A1924F2674300D08F43 /* Build configuration list for PBXNativeTarget "Dory" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66427A1A24F2674300D08F43 /* Debug */,
+				66427A1B24F2674300D08F43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 664279FD24F2674200D08F43 /* Project object */;
+}

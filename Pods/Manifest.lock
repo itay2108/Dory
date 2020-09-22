@@ -1,0 +1,38 @@
+PODS:
+  - CircleProgressView (1.2.0)
+  - Realm (4.3.2):
+    - Realm/Headers (= 4.3.2)
+  - Realm/Headers (4.3.2)
+  - RealmSwift (4.3.2):
+    - Realm (= 4.3.2)
+  - SnapKit (5.0.1)
+  - SwiftFontName (4.0.0)
+  - Then (2.7.0)
+
+DEPENDENCIES:
+  - CircleProgressView (~> 1.0)
+  - RealmSwift
+  - SnapKit (~> 5.0.0)
+  - SwiftFontName
+  - Then
+
+SPEC REPOS:
+  trunk:
+    - CircleProgressView
+    - Realm
+    - RealmSwift
+    - SnapKit
+    - SwiftFontName
+    - Then
+
+SPEC CHECKSUMS:
+  CircleProgressView: 6b5b091d59dc5e5d2fda84e637a40498cdc39937
+  Realm: 5e92902e2875dff4bb0fd02f67bb737c3d5db2bc
+  RealmSwift: 9a360fc7bae04fc2e308a34fbd899d5faa2d6b22
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SwiftFontName: 08aaa0143dadc7753587c4317d9e8a5f2c2418b5
+  Then: acfe0be7e98221c6204e12f8161459606d5d822d
+
+PODFILE CHECKSUM: 68067357f1565cd0401ca3e9233f061d18a1cd5a
+
+COCOAPODS: 1.10.0.rc.1

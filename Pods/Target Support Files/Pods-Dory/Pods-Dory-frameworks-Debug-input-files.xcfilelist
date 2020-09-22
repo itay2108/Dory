@@ -1,0 +1,7 @@
+${PODS_ROOT}/Target Support Files/Pods-Dory/Pods-Dory-frameworks.sh
+${BUILT_PRODUCTS_DIR}/CircleProgressView/CircleProgressView.framework
+${BUILT_PRODUCTS_DIR}/Realm/Realm.framework
+${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework
+${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
+${BUILT_PRODUCTS_DIR}/SwiftFontName/SwiftFontName.framework
+${BUILT_PRODUCTS_DIR}/Then/Then.framework
