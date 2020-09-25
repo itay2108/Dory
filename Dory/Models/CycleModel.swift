@@ -125,6 +125,8 @@ class CycleModel {
         } catch {
             print("error writing to realm \(error)")
         }
+        
+        setParameters()
     }
     
     func startNewCycle() {

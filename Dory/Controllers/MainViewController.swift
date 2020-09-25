@@ -32,31 +32,163 @@ class MainViewController: UIViewController {
     
     //UI elements
     
-    private lazy var mainHeading = UILabel()
-    private lazy var secondaryHeading = UILabel()
+    private lazy var mainHeading: UILabel = {
+        let hdg = UILabel(frame: .zero)
+        hdg.font = fontTypes.h1
+        hdg.numberOfLines = 1
+        hdg.text = "Good Night Dory"
+        hdg.textColor = UIColor(named: "gunmetal")
+        return hdg
+    }()
     
-    private var daysContainer = UIView()
-    private lazy var circleProgressView = CircleProgressView()
-    private lazy var daysToActionLabel = UILabel()
-    private lazy var daysHoursLabel = UILabel()
+    private lazy var secondaryHeading: UILabel = {
+        let hdg = UILabel(frame: .zero)
+        hdg.font = fontTypes.h3
+        hdg.numberOfLines = 1
+        hdg.text = "Remember to \(cycleModel.nextAction?.rawValue ?? "remove(error)") your ring in"
+        hdg.textColor = UIColor(named: "gunmetal")
+        return hdg
+    }()
     
-    private lazy var middleStackView = UIStackView()
+    private lazy var daysContainer: UIView = {
+        let container = UIView()
+        container.circlize()
+        container.shadow(color: .black, radius: 9, opacity: 0.07, xOffset: 0, yOffset: 7.4)
+        container.backgroundColor = .white
+        return container
+    }()
     
-    private lazy var leftDateStackView = UIStackView()
-    private lazy var removeOnLabel = UILabel()
-    private lazy var removeDateLabel = UILabel()
+    private lazy var circleProgressView: CircleProgressView = {
+        let circle = CircleProgressView()
+        circle.roundedCap = true
+        circle.trackFillColor = K.colors.sizzlingRed!
+        circle.trackWidth = 11 * heightModifier
+        circle.centerFillColor = .clear
+        circle.backgroundColor = .clear
+        circle.trackBackgroundColor = .clear
+        circle.clockwise = true
+        circle.progress = 0.75
+        return circle
+    }()
     
-    private lazy var rightDateStackView = UIStackView()
-    private lazy var insertOnLabel = UILabel()
-    private lazy var insertDateLabel = UILabel()
+    private lazy var daysToActionLabel: UILabel = {
+        return label(font: fontTypes.xl, numberOfLines: 1, text: "99")
+    }()
     
-    private var bottomStackView: UIStackView?
-    private var reminderTimeButton: MainMenuButton?
-    private var postponeRingRemovalButton: MainMenuButton?
-    private var prescriptionNotificationButton: MainMenuButton?
-    private var changeCycleButton: MainMenuButton?
+    private lazy var daysHoursLabel: UILabel = {
+        return label(font: fontTypes.h2, numberOfLines: 1, text: "days")
+    }()
     
-    private lazy var actionBtn: UIButton! = UIButton()
+    private lazy var middleStackView: UIStackView = {
+        let stackview = UIStackView()
+        stackview.axis = .horizontal
+        stackview.distribution = .equalCentering
+        stackview.alignment = .center
+        return stackview
+    }()
+    
+    private lazy var leftDateStackView: UIStackView = {
+        let stackview = UIStackView()
+        stackview.axis = .vertical
+        stackview.distribution = .equalSpacing
+        stackview.spacing = 6 / heightModifier
+        stackview.alignment = .center
+        return stackview
+    }()
+    
+    private lazy var removeOnLabel: UILabel = {
+        return label(font: fontTypes.h3, numberOfLines: 1, text: "Remove on")
+    }()
+    
+    private lazy var removeDateLabel: UILabel = {
+        return label(font: fontTypes.h2_medium, numberOfLines: 1, text: "14/11/23")
+    }()
+    
+    private lazy var separator: UIView = {
+        let sep = UIView()
+        sep.backgroundColor = UIColor(named: "gunmetal")
+        return sep
+    }()
+    
+    private lazy var rightDateStackView: UIStackView = {
+        let stackview = UIStackView()
+        stackview.axis = .vertical
+        stackview.distribution = .equalSpacing
+        stackview.spacing = 6 / heightModifier
+        stackview.alignment = .center
+        return stackview
+    }()
+    
+    private lazy var insertOnLabel: UILabel =  {
+        return label(font: fontTypes.h3, numberOfLines: 1, text: "Insert on")
+    }()
+    
+    private lazy var insertDateLabel: UILabel = {
+        return label(font: fontTypes.h2_medium, numberOfLines: 1, text: "21/11/23")
+    }()
+    
+    private lazy var bottomBG: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(named: "alice blue")
+        return view
+    }()
+    
+    private lazy var bottomStackView: UIStackView = {
+        let stackview = UIStackView()
+        stackview.axis = .vertical
+        stackview.distribution = .equalCentering
+        stackview.alignment = .fill
+        return stackview
+    }()
+    
+    private lazy var reminderTimeButton: MainMenuButton = {
+        let button = MainMenuButton()
+        button.addTarget(self, action: #selector(setReminderButtonTapped), for: .touchUpInside)
+        button.buttonTitle = "Set reminder time"
+        button.accessory(title: "13:00", tint: .lightGray)
+        button.separateBottom(active: true)
+        return button
+    }()
+    
+    private lazy var postponeRingRemovalButton: MainMenuButton = {
+        let button = MainMenuButton()
+        button.addTarget(self, action: #selector(postponeNextRemovalButtonTapped), for: .touchUpInside)
+        button.image = K.buttonImage.clockwiseArrow
+        button.buttonTitle = "Postpone next ring removal"
+        button.separateBottom(active: true)
+        return button
+    }()
+    
+    private lazy var prescriptionNotificationButton: MainMenuButton = {
+        let button = MainMenuButton()
+        button.addTarget(self, action: #selector(prescriptionNotificationButtonTapped), for: .touchUpInside)
+        button.image = K.buttonImage.heart
+        button.buttonTitle = "Prescription notification"
+        button.accessory(image: K.accessory.star, tint: K.colors.yellow!)
+        button.separateBottom(active: true)
+        return button
+    }()
+    
+    private lazy var changeCycleButton: MainMenuButton = {
+        let button = MainMenuButton()
+        button.addTarget(self, action: #selector(changeCycleButtonTapped), for: .touchUpInside)
+        button.image = K.buttonImage.swap
+        button.buttonTitle = "Change cycle"
+        return button
+    }()
+    
+    private lazy var actionBtn: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = K.colors.sizzlingRed
+        button.titleLabel?.font = fontTypes.h3_medium
+        button.titleLabel?.textColor = K.colors.ghostWhite
+        button.tintColor = .white
+        button.setTitle("\(cycleModel.nextAction?.rawValue.capitalized ?? "remove(error)") ring", for: .normal)
+        button.layer.cornerRadius = 32
+        button.addTarget(self, action: #selector(actionBtnPressed(_:)), for: .touchUpInside)
+        button.isHidden = true
+        return button
+    }()
     
     //MARK: - Default Methods
     
@@ -70,105 +202,97 @@ class MainViewController: UIViewController {
         print(heightModifier, widthModifier)
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateUIComponents), name: updateParametersNotificationName, object: nil)
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        initUIViews()
+        addSubviews()
     }
     
     override func viewDidLayoutSubviews() {
+        addConstraintsForAllSubviews()
         setUpTestDayButton()
         updateUIComponents()
-        
     }
     
     
     //MARK: - UI Initialization
     
-    func initUIViews() {
+    func addSubviews() {
         
-        for view in self.view.subviews {
-            view.removeFromSuperview()
+        view.addSubview(mainHeading)
+        view.addSubview(secondaryHeading)
+        
+        view.addSubview(daysContainer)
+        daysContainer.addSubview(circleProgressView)
+        daysContainer.addSubview(daysToActionLabel)
+        daysContainer.addSubview(daysHoursLabel)
+        
+        view.addSubview(middleStackView)
+        middleStackView.addArrangedSubview(leftDateStackView)
+        middleStackView.addArrangedSubview(separator)
+        middleStackView.addArrangedSubview(rightDateStackView)
+        
+        leftDateStackView.addArrangedSubview(removeOnLabel)
+        leftDateStackView.addArrangedSubview(removeDateLabel)
+        
+        rightDateStackView.addArrangedSubview(insertOnLabel)
+        rightDateStackView.addArrangedSubview(insertDateLabel)
+        
+        view.addSubview(bottomBG)
+        view.addSubview(bottomStackView)
+        
+        let stack = [reminderTimeButton, postponeRingRemovalButton, prescriptionNotificationButton, changeCycleButton]
+        
+        for i in stack {
+            bottomStackView.addArrangedSubview(i)
         }
+    }
+    
+    func addConstraintsForAllSubviews() {
         
         //Headings
         
-        mainHeading = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40)).then {
-            $0.font = fontTypes.h1
-            $0.numberOfLines = 1
-            $0.text = "Good Night Dory"
-            $0.textColor = UIColor(named: "gunmetal")
-        }
-        view.addSubview(mainHeading) { (make) in
+        mainHeading.snp.makeConstraints { (make) in
             make.top.equalTo(view).offset(60 * heightModifier)
             make.left.equalToSuperview().offset(24)
         }
-        
-        secondaryHeading = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20)).then {
-            $0.font = fontTypes.h3
-            $0.numberOfLines = 1
-            $0.text = "Remember to \(cycleModel.nextAction?.rawValue ?? "remove(error)") your ring in"
-            $0.textColor = UIColor(named: "gunmetal")
-        }
-        view.addSubview(secondaryHeading) { (make) in
+
+        secondaryHeading.snp.makeConstraints { (make) in
             make.top.equalTo(mainHeading.snp.bottom).offset(6 * heightModifier)
             make.left.equalToSuperview().offset(24)
         }
+
+        //Days container
         
-        //Days Container
-        
-        daysContainer = UIView(frame: CGRect(x: 0, y: 0, width: 204 * heightModifier, height: 204 * heightModifier)).then {
-            $0.circlize()
-            $0.shadow(color: .black, radius: 9, opacity: 0.07, xOffset: 0, yOffset: 7.4)
-            $0.backgroundColor = .white
-        }
-        view.addSubview(daysContainer) { (make) in
+        daysContainer.snp.makeConstraints { (make) in
             make.height.equalTo(204 * heightModifier)
             make.width.equalTo(daysContainer.snp.height)
             make.top.equalTo(secondaryHeading.snp.bottom).offset(36 * heightModifier)
             make.centerX.equalTo(view.snp.centerX)
         }
         
-        circleProgressView = CircleProgressView(frame: CGRect(x: 0, y: 0, width: 192, height: 192)).then {
-            $0.roundedCap = true
-            $0.trackFillColor = K.colors.sizzlingRed!
-            $0.trackWidth = 11 * heightModifier
-            $0.centerFillColor = .clear
-            $0.backgroundColor = .clear
-            $0.trackBackgroundColor = .clear
-            $0.clockwise = true
-            $0.progress = 0.75
-        }
-        daysContainer.addSubview(circleProgressView) { (make) in
+        circleProgressView.snp.makeConstraints { (make) in
             make.height.equalTo(daysContainer.snp.height).multipliedBy(0.85)
             make.width.equalTo(daysContainer.snp.width).multipliedBy(0.85)
             make.center.equalToSuperview()
         }
         
-        daysToActionLabel = label(font: fontTypes.xl, numberOfLines: 1, text: "99")
-        
-        daysContainer.addSubview(daysToActionLabel) { (make) in
+        daysContainer.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview().offset(-10 * heightModifier)
             make.height.equalTo(daysToActionLabel.font.pointSize + 2)
         }
         
-        daysHoursLabel = label(font: fontTypes.h2, numberOfLines: 1, text: "days")
-        
-        daysContainer.addSubview(daysHoursLabel) { (make) in
+        daysHoursLabel.snp.makeConstraints { (make) in
             make.top.equalTo(daysToActionLabel.snp.bottom).offset(4 * heightModifier)
             make.centerX.equalToSuperview()
         }
         
-        //Middle Dates
+        //Middle dates
         
-        middleStackView = UIStackView().then {
-            $0.axis = .horizontal
-            $0.distribution = .equalCentering
-            $0.alignment = .center
-        }
-        
-        view.addSubview(middleStackView) { (make) in
+        middleStackView.snp.makeConstraints { (make) in
             make.centerX.equalTo(view.snp.centerX)
             make.top.equalTo(daysContainer.snp.bottom).offset(32 * heightModifier)
             make.width.equalTo(view.snp.width).multipliedBy(0.65 * widthModifier)
@@ -176,157 +300,58 @@ class MainViewController: UIViewController {
         }
         
         //left part
-        leftDateStackView = UIStackView().then {
-            $0.axis = .vertical
-            $0.distribution = .equalSpacing
-            $0.spacing = 6 / heightModifier
-            $0.alignment = .center
-            
-            $0.snp.makeConstraints { (make) in
-                make.width.equalTo(75 * widthModifier)
-                make.height.equalTo(50 * heightModifier)
-            }
+        
+        leftDateStackView.snp.makeConstraints { (make) in
+            make.width.equalTo(75 * widthModifier)
+            make.height.equalTo(50 * heightModifier)
         }
-
-        
-        removeOnLabel = label(font: fontTypes.h3, numberOfLines: 1, text: "Remove on")
-        leftDateStackView.addArrangedSubview(removeOnLabel)
-        
-        removeDateLabel = label(font: fontTypes.h2_medium, numberOfLines: 1, text: "14/11/23")
-        leftDateStackView.addArrangedSubview(removeDateLabel)
-        
-        middleStackView.addArrangedSubview(leftDateStackView)
         
         //separator
         
-        let separator = UIView().then {
-            $0.backgroundColor = UIColor(named: "gunmetal")
-            
-            $0.snp.makeConstraints { (make) in
-                make.width.equalTo(1)
-            }
-        }
-        
-        middleStackView.addArrangedSubview(separator)
-        
         separator.snp.makeConstraints { (make) in
+            make.width.equalTo(1)
             make.height.equalTo(middleStackView.snp.height).multipliedBy(0.75)
+
         }
         
         //right part
-        rightDateStackView = UIStackView().then {
-            $0.axis = .vertical
-            $0.distribution = .equalSpacing
-            $0.spacing = 6 / heightModifier
-            $0.alignment = .center
-            
-            $0.snp.makeConstraints { (make) in
-                make.width.equalTo(75 * widthModifier)
-                make.height.equalTo(50 * heightModifier)
-            }
+        
+        rightDateStackView.snp.makeConstraints { (make) in
+            make.width.equalTo(75 * widthModifier)
+            make.height.equalTo(50 * heightModifier)
         }
         
+        //bottom part
         
-        insertOnLabel = label(font: fontTypes.h3, numberOfLines: 1, text: "Insert on")
-        rightDateStackView.addArrangedSubview(insertOnLabel)
-        
-        insertDateLabel = label(font: fontTypes.h2_medium, numberOfLines: 1, text: "21/11/23")
-        rightDateStackView.addArrangedSubview(insertDateLabel)
-        
-        middleStackView.addArrangedSubview(rightDateStackView)
-        
-        
-        
-        //Bottom part
-        let bottomBG = UIView().then {
-            $0.backgroundColor = UIColor(named: "alice blue")
-        }
-        
-        view.addSubview(bottomBG) { (make) in
+        bottomBG.snp.makeConstraints { (make) in
             make.bottom.equalTo(view.snp.bottom)
             make.left.equalTo(view.snp.left)
             make.right.equalTo(view.snp.right)
             make.height.equalTo(view.snp.height).multipliedBy(0.4)
         }
         
-        //buttons
-        
-        bottomStackView = UIStackView().then {
-            $0.axis = .vertical
-            $0.distribution = .equalCentering
-            $0.alignment = .fill
-        }
-        
-        view.addSubview(bottomStackView!) { (make) in
+        bottomStackView.snp.makeConstraints { (make) in
             make.width.equalTo(view.snp.width)
             make.centerX.equalTo(view.snp.centerX)
             make.top.equalTo(bottomBG.snp.top)
             make.bottom.equalTo(view.snp.bottom).offset(-(view.safeAreaInsets.bottom + (6 * heightModifier)))
         }
         
-        reminderTimeButton = MainMenuButton().then {
-            $0.addTarget(self, action: #selector(setReminderButtonTapped), for: .touchUpInside)
-            $0.buttonTitle = "Set reminder time"
-
-            $0.accessory(title: "13:00", tint: .lightGray)
-            $0.separateBottom(active: true)
-        }
-
-        postponeRingRemovalButton = MainMenuButton().then {
-            $0.addTarget(self, action: #selector(postponeNextRemovalButtonTapped), for: .touchUpInside)
-            $0.image = K.buttonImage.clockwiseArrow
-            $0.buttonTitle = "Postpone next ring removal"
-            $0.separateBottom(active: true)
-        }
-
-        prescriptionNotificationButton = MainMenuButton().then {
-            $0.addTarget(self, action: #selector(prescriptionNotificationButtonTapped), for: .touchUpInside)
-            $0.image = K.buttonImage.heart
-            $0.buttonTitle = "Prescription notification"
-
-            $0.accessory(image: K.accessory.star, tint: K.colors.yellow!)
-            $0.separateBottom(active: true)
-        }
-
-        changeCycleButton = MainMenuButton().then {
-            $0.addTarget(self, action: #selector(changeCycleButtonTapped), for: .touchUpInside)
-            $0.image = K.buttonImage.swap
-            $0.buttonTitle = "Change cycle"
-        }
+        //add buttons constraints in bottom stack view
         
-        
-        let stack = [reminderTimeButton!, postponeRingRemovalButton!, prescriptionNotificationButton!, changeCycleButton!]
-        
-        for i in stack {
-            bottomStackView?.addArrangedSubview(i)
-            
+        for i in bottomStackView.arrangedSubviews {
             i.snp.makeConstraints { (make) in
-                make.height.equalTo(bottomStackView!.snp.height).multipliedBy(0.24)
+                make.height.equalTo(bottomStackView.snp.height).multipliedBy(0.24)
             }
-
         }
         
-    }
-    
-    private func initActionBtn() {
+        //action button
         
-        let actionBtn = UIButton().then {
-            $0.backgroundColor = K.colors.sizzlingRed
-            
-            $0.titleLabel?.font = fontTypes.h3_medium
-            $0.titleLabel?.textColor = K.colors.ghostWhite
-            $0.tintColor = .white
-            $0.setTitle("\(cycleModel.nextAction?.rawValue.capitalized ?? "remove(error)") ring", for: .normal)
-            $0.layer.cornerRadius = 32
-            $0.addTarget(self, action: #selector(actionBtnPressed(_:)), for: .touchUpInside)
-        }
-        
-        view.addSubview(actionBtn) { (make) in
+        actionBtn.snp.makeConstraints { (make) in
             make.height.equalTo(middleStackView.snp.height)
             make.width.equalTo(middleStackView.snp.width)
             make.center.equalTo(middleStackView.snp.center)
         }
-        
     }
     
     
@@ -358,7 +383,7 @@ class MainViewController: UIViewController {
             updateUIComponents()
         }
         
-        sender.removeFromSuperview()
+        actionBtn.isHidden = true
     }
 
     
@@ -392,7 +417,7 @@ class MainViewController: UIViewController {
         }
         
         if cycleModel.currentCycle?.state == 0 {
-            initActionBtn()
+            actionBtn.isHidden = false
             circleProgressView.progress = 1
         }
         
