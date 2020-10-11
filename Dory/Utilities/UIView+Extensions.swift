@@ -44,4 +44,14 @@ extension Date {
         
         return dateFormatter.string(from: self)
     }
+    
+    func startOfDay() -> Date? {
+        let calendar = Calendar.current
+        return calendar.dateInterval(of: .day, for: self)?.start
+    }
+    
+    func at(hour: Int) -> Date? {
+        let calendar = Calendar.current
+        return calendar.date(bySettingHour: hour, minute: 0, second: 0, of: self)
+    }
 }

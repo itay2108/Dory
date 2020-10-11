@@ -21,7 +21,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
             window = UIWindow(frame: windowScene.coordinateSpace.bounds)
             window?.windowScene = windowScene
+        
+        if UIApplication.isFirstLaunch() {
+            window?.rootViewController = OnboardingNavigationController(rootViewController: WelcomeViewController())
+        } else {
             window?.rootViewController = MainTabBarController()
+        }
+        
             window?.rootViewController?.view.backgroundColor = .white
             window?.makeKeyAndVisible()
 

@@ -17,6 +17,7 @@ import UIKit
             static let gunmetal = UIColor(named: "gunmetal")
             static let sizzlingRed = UIColor(named: "sizzling-red")
             static let yellow = UIColor(named: "yellow")
+            static let green = UIColor(named: "green")
         }
         
         struct buttonImage {
@@ -33,6 +34,14 @@ import UIKit
         
         struct accessory {
             static let star = UIImage(systemName: "star.fill")!
+        }
+        
+        struct labels {
+            static let removedOn = "removed on"
+            static let removeOn = "remove on"
+            
+            static let days = "days"
+            static let hours = "hours"
         }
     }
 

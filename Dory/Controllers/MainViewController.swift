@@ -52,7 +52,6 @@ class MainViewController: UIViewController {
     
     private lazy var daysContainer: UIView = {
         let container = UIView()
-        container.circlize()
         container.shadow(color: .black, radius: 9, opacity: 0.07, xOffset: 0, yOffset: 7.4)
         container.backgroundColor = .white
         return container
@@ -190,6 +189,17 @@ class MainViewController: UIViewController {
         return button
     }()
     
+    private lazy var dayTestBtn: UIButton = {
+        let dayTestButton = UIButton()
+        dayTestButton.backgroundColor = .clear
+        dayTestButton.layer.cornerRadius = 12
+        dayTestButton.setTitle("day++", for: .normal)
+        dayTestButton.setTitleColor(.link, for: .normal)
+        dayTestButton.titleLabel?.font = fontTypes.h3
+        dayTestButton.addTarget(self, action: #selector(skipDayBtnPressed(_:)), for: .touchUpInside)
+        return dayTestButton
+    }()
+    
     //MARK: - Default Methods
     
     override func viewDidLoad() {
@@ -203,17 +213,22 @@ class MainViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateUIComponents), name: updateParametersNotificationName, object: nil)
         
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        addSubviews()
+        setupUI()
+
     }
     
     override func viewDidLayoutSubviews() {
-        addConstraintsForAllSubviews()
-        setUpTestDayButton()
+        daysContainer.circlize()
+        bottomStackView.snp.updateConstraints { (make) in
+            make.bottom.equalTo(view.snp.bottom).offset(-(view.safeAreaInsets.bottom + (6 * heightModifier)))
+        }
         updateUIComponents()
+        
+    }
+    
+    private func setupUI() {
+        addSubviews()
+        addConstraintsForAllSubviews()
     }
     
     
@@ -242,21 +257,26 @@ class MainViewController: UIViewController {
         
         view.addSubview(bottomBG)
         view.addSubview(bottomStackView)
-        
+
         let stack = [reminderTimeButton, postponeRingRemovalButton, prescriptionNotificationButton, changeCycleButton]
-        
+
         for i in stack {
             bottomStackView.addArrangedSubview(i)
         }
+
+        view.addSubview(actionBtn)
+        
+        view.addSubview(dayTestBtn)
     }
     
-    func addConstraintsForAllSubviews() {
+    private func addConstraintsForAllSubviews() {
         
         //Headings
         
         mainHeading.snp.makeConstraints { (make) in
             make.top.equalTo(view).offset(60 * heightModifier)
             make.left.equalToSuperview().offset(24)
+            make.height.equalTo(mainHeading.font.pointSize + 4)
         }
 
         secondaryHeading.snp.makeConstraints { (make) in
@@ -265,92 +285,99 @@ class MainViewController: UIViewController {
         }
 
         //Days container
-        
+
         daysContainer.snp.makeConstraints { (make) in
-            make.height.equalTo(204 * heightModifier)
+            make.height.equalTo(204 * heightModifier).priority(.high)
             make.width.equalTo(daysContainer.snp.height)
             make.top.equalTo(secondaryHeading.snp.bottom).offset(36 * heightModifier)
             make.centerX.equalTo(view.snp.centerX)
         }
-        
+
         circleProgressView.snp.makeConstraints { (make) in
             make.height.equalTo(daysContainer.snp.height).multipliedBy(0.85)
             make.width.equalTo(daysContainer.snp.width).multipliedBy(0.85)
             make.center.equalToSuperview()
         }
-        
-        daysContainer.snp.makeConstraints { (make) in
+
+        daysToActionLabel.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview().offset(-10 * heightModifier)
             make.height.equalTo(daysToActionLabel.font.pointSize + 2)
         }
-        
+
         daysHoursLabel.snp.makeConstraints { (make) in
             make.top.equalTo(daysToActionLabel.snp.bottom).offset(4 * heightModifier)
             make.centerX.equalToSuperview()
         }
-        
+
         //Middle dates
-        
+
         middleStackView.snp.makeConstraints { (make) in
             make.centerX.equalTo(view.snp.centerX)
             make.top.equalTo(daysContainer.snp.bottom).offset(32 * heightModifier)
             make.width.equalTo(view.snp.width).multipliedBy(0.65 * widthModifier)
             make.height.equalTo(60 * heightModifier)
         }
-        
+
         //left part
-        
+
         leftDateStackView.snp.makeConstraints { (make) in
             make.width.equalTo(75 * widthModifier)
             make.height.equalTo(50 * heightModifier)
         }
-        
+
         //separator
-        
+
         separator.snp.makeConstraints { (make) in
             make.width.equalTo(1)
             make.height.equalTo(middleStackView.snp.height).multipliedBy(0.75)
 
         }
-        
+
         //right part
-        
+
         rightDateStackView.snp.makeConstraints { (make) in
             make.width.equalTo(75 * widthModifier)
             make.height.equalTo(50 * heightModifier)
         }
-        
+
         //bottom part
-        
+
         bottomBG.snp.makeConstraints { (make) in
             make.bottom.equalTo(view.snp.bottom)
             make.left.equalTo(view.snp.left)
             make.right.equalTo(view.snp.right)
             make.height.equalTo(view.snp.height).multipliedBy(0.4)
         }
-        
+
         bottomStackView.snp.makeConstraints { (make) in
             make.width.equalTo(view.snp.width)
             make.centerX.equalTo(view.snp.centerX)
             make.top.equalTo(bottomBG.snp.top)
             make.bottom.equalTo(view.snp.bottom).offset(-(view.safeAreaInsets.bottom + (6 * heightModifier)))
         }
-        
+
         //add buttons constraints in bottom stack view
-        
+
         for i in bottomStackView.arrangedSubviews {
             i.snp.makeConstraints { (make) in
                 make.height.equalTo(bottomStackView.snp.height).multipliedBy(0.24)
             }
         }
-        
+
         //action button
-        
+
         actionBtn.snp.makeConstraints { (make) in
             make.height.equalTo(middleStackView.snp.height)
             make.width.equalTo(middleStackView.snp.width)
             make.center.equalTo(middleStackView.snp.center)
+        }
+
+        dayTestBtn.snp.makeConstraints { (make) in
+            make.right.equalToSuperview().offset(-24)
+            make.centerY.equalTo(mainHeading.snp.centerY)
+            make.width.equalTo(48)
+            make.height.equalTo(30)
         }
     }
     
@@ -374,7 +401,7 @@ class MainViewController: UIViewController {
     }
     
     @objc func actionBtnPressed(_ sender: UIButton!) {
-        print(cycleModel.currentCycle?.state as Any)
+        
         if cycleModel.currentCycle?.state == 0 {
             cycleModel.changeRingState(to: -1)
             updateUIComponents()
@@ -401,23 +428,28 @@ class MainViewController: UIViewController {
         //set remove date label by state
         
         if cycleModel.currentCycle?.state == -1 {
+            removeOnLabel.text = K.labels.removedOn
             removeDateLabel.text = cycleModel.currentCycle?.removalDate?.asString(format: "dd/MM/yy")
         } else if cycleModel.currentCycle?.state == 0 {
             removeDateLabel.text = cycleModel.currentCycle?.expectedRemovalDate?.asString(format: "dd/MM/yy")
         } else if cycleModel.currentCycle?.state == 1 {
+            removeOnLabel.text = K.labels.removeOn
             removeDateLabel.text = cycleModel.currentCycle?.expectedRemovalDate?.asString(format: "dd/MM/yy")
         }
         
         //set insert date label by checking if expected end date has passed
 
-        if Date() > (cycleModel.currentCycle?.expectedEndDate)! {
-            insertDateLabel.text = Date().asString(format: "dd/MM/yy")
+        if cycleModel.now > (cycleModel.currentCycle?.expectedEndDate)! {
+            insertDateLabel.text = cycleModel.now.asString(format: "dd/MM/yy")
         } else {
             insertDateLabel.text = cycleModel.currentCycle?.expectedEndDate?.asString(format: "dd/MM/yy")
         }
         
-        if cycleModel.currentCycle?.state == 0 {
+        //if awaiting action (removal or insertion), show action button
+        
+        if (cycleModel.currentCycle?.state == 0) || (cycleModel.currentCycle?.state == -1 && cycleModel.daysToAction! <= 0) {
             actionBtn.isHidden = false
+            actionBtn.setTitle("\(cycleModel.nextAction?.rawValue.capitalized ?? "remove(error)") ring", for: .normal)
             circleProgressView.progress = 1
         }
         
@@ -469,29 +501,10 @@ class MainViewController: UIViewController {
 
     
     //MARK: - Testing methods (Comment out before production!)
-    
-    func setUpTestDayButton() {
-        let dayTestButton = UIButton(frame: CGRect(x: 0, y: 0, width: 48, height: 30))
-        dayTestButton.backgroundColor = .clear
-        dayTestButton.layer.cornerRadius = 12
-        dayTestButton.setTitle("day++", for: .normal)
-        dayTestButton.setTitleColor(.link, for: .normal)
-        dayTestButton.titleLabel?.font = fontTypes.h3
-        dayTestButton.addTarget(self, action: #selector(skipDayBtnPressed(_:)), for: .touchUpInside)
-        
 
-        view.addSubview(dayTestButton) { (make) in
-            make.right.equalToSuperview().offset(-24)
-            make.top.equalTo(view.snp.top).offset(16 + self.view.safeAreaInsets.top)
-            make.width.equalTo(48)
-            make.height.equalTo(30)
-        }
-
-    }
     
     @objc func skipDayBtnPressed(_ sender: UIButton!) {
         cycleModel.now = dayPlusPlus(modify: cycleModel.now)!
-        
     }
     
     

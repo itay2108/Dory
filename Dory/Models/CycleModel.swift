@@ -83,7 +83,8 @@ class CycleModel {
         guard cycle != nil else { return }
         
         if cycle!.state == 1 {
-            daysToAction = numberOfDays(between: now, and: cycle!.expectedRemovalDate)! + 1
+            daysToAction = numberOfDays(between: now.startOfDay(), and: cycle!.expectedRemovalDate?.startOfDay())!
+            
         }
         
         else if cycle!.state == 0 {
@@ -98,17 +99,15 @@ class CycleModel {
     func checkForAwaitingRemoval() {
         guard currentCycle != nil && currentCycle?.expectedRemovalDate != nil else { return }
         
-        let startOfToday = calendar.dateInterval(of: .day, for: now)?.start
-        let dayOfRemoval = calendar.dateInterval(of: .day, for: (currentCycle?.expectedRemovalDate)!)?.start
+        let dayOfRemoval = currentCycle?.expectedRemovalDate?.startOfDay()
         
-        guard startOfToday != nil, dayOfRemoval != nil else { return }
+        guard dayOfRemoval != nil else { return }
         
-        if startOfToday! >= dayOfRemoval! {
+        if now.startOfDay()! >= dayOfRemoval! && currentCycle?.state != -1 {
             do {
                 try realm.write {
                     currentCycle?.state = 0
-                    currentCycle?.expectedRemovalDate = Date()
-                    currentCycle?.expectedEndDate = calendar.date(byAdding: .day, value: 7, to: currentCycle?.expectedRemovalDate ?? Date())
+                    currentCycle?.expectedEndDate = calendar.date(byAdding: .day, value: 7, to: now)
                 }
             } catch {
                 print("error in realm write transaction:", error)
@@ -121,26 +120,27 @@ class CycleModel {
         do {
             try realm.write {
                 currentCycle?.state = newState
+                currentCycle?.removalDate = currentCycle?.state == -1 ? now : nil
+                self.nextAction = .insert 
             }
         } catch {
             print("error writing to realm \(error)")
         }
-        
-        setParameters()
     }
     
     func startNewCycle() {
         
-        let newCycle = Cycle().initiateCycle(withStart: Date())
+        let newCycle = Cycle().initiateCycle(withStart: now)
         
         do {
             try realm.write {
-                currentCycle?.endDate = Date()
+                currentCycle?.endDate = now
                 realm.add(newCycle)
             }
         } catch { print("error writing to realm \(error)") }
         
         currentCycle = cycles?.last
+        self.setParameters()
     }
 
     func numberOfDays(between start: Date?, and end: Date?) -> Int? {
