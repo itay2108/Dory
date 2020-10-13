@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C2298862BE98B624492303A /* Pods_Dory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8375E9C9C5BDD4B1F2954C /* Pods_Dory.framework */; };
+		276A2DFAF7868328252DA49E /* Pods_Dory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F882441EA17039C837DD58B /* Pods_Dory.framework */; };
 		6613533D25164A8600B51F14 /* CycleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6613533C25164A8600B51F14 /* CycleModel.swift */; };
 		66242CB5253203B800F8543C /* QuestionBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66242CB4253203B800F8543C /* QuestionBlock.swift */; };
 		66427A0924F2674200D08F43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66427A0824F2674200D08F43 /* AppDelegate.swift */; };
@@ -36,7 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4732403254631ED82A2446CB /* Pods-Dory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dory.release.xcconfig"; path = "Target Support Files/Pods-Dory/Pods-Dory.release.xcconfig"; sourceTree = "<group>"; };
+		5F882441EA17039C837DD58B /* Pods_Dory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6613533C25164A8600B51F14 /* CycleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleModel.swift; sourceTree = "<group>"; };
 		66242CB4253203B800F8543C /* QuestionBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionBlock.swift; sourceTree = "<group>"; };
 		66427A0524F2674200D08F43 /* Dory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dory.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,8 +64,8 @@
 		66E9C2382531DD8400A07380 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		66F0E74024F7FE8000556C59 /* Cycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cycle.swift; sourceTree = "<group>"; };
 		66F439D42533A9B8007BA2F2 /* OnboardingChoiceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingChoiceButton.swift; sourceTree = "<group>"; };
-		9B8375E9C9C5BDD4B1F2954C /* Pods_Dory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B37EF362280BB931D22853E6 /* Pods-Dory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dory.debug.xcconfig"; path = "Target Support Files/Pods-Dory/Pods-Dory.debug.xcconfig"; sourceTree = "<group>"; };
+		DE99D265BA8049B2BC0C06B9 /* Pods-Dory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dory.release.xcconfig"; path = "Target Support Files/Pods-Dory/Pods-Dory.release.xcconfig"; sourceTree = "<group>"; };
+		E79960A20B36E998376F812D /* Pods-Dory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dory.debug.xcconfig"; path = "Target Support Files/Pods-Dory/Pods-Dory.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,28 +73,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C2298862BE98B624492303A /* Pods_Dory.framework in Frameworks */,
+				276A2DFAF7868328252DA49E /* Pods_Dory.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0308DC2C5ED6818C78A10CDD /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				9B8375E9C9C5BDD4B1F2954C /* Pods_Dory.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		664279FC24F2674200D08F43 = {
 			isa = PBXGroup;
 			children = (
 				66427A0724F2674200D08F43 /* Dory */,
 				66427A0624F2674200D08F43 /* Products */,
 				D3152E0999C6223108A75A46 /* Pods */,
-				0308DC2C5ED6818C78A10CDD /* Frameworks */,
+				FD652DEC26CEA39DB9B2F2D6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -182,10 +174,18 @@
 		D3152E0999C6223108A75A46 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B37EF362280BB931D22853E6 /* Pods-Dory.debug.xcconfig */,
-				4732403254631ED82A2446CB /* Pods-Dory.release.xcconfig */,
+				E79960A20B36E998376F812D /* Pods-Dory.debug.xcconfig */,
+				DE99D265BA8049B2BC0C06B9 /* Pods-Dory.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FD652DEC26CEA39DB9B2F2D6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5F882441EA17039C837DD58B /* Pods_Dory.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,11 +195,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 66427A1924F2674300D08F43 /* Build configuration list for PBXNativeTarget "Dory" */;
 			buildPhases = (
-				9C396BA2A2943353219EEE34 /* [CP] Check Pods Manifest.lock */,
+				A5EF01BE68AC97FF3D498A5A /* [CP] Check Pods Manifest.lock */,
 				66427A0124F2674200D08F43 /* Sources */,
 				66427A0224F2674200D08F43 /* Frameworks */,
 				66427A0324F2674200D08F43 /* Resources */,
-				4BE9C28B6E6C7F627E28E866 /* [CP] Embed Pods Frameworks */,
+				9285C6953534DC6AEBA73358 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -255,7 +255,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4BE9C28B6E6C7F627E28E866 /* [CP] Embed Pods Frameworks */ = {
+		9285C6953534DC6AEBA73358 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -272,7 +272,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dory/Pods-Dory-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9C396BA2A2943353219EEE34 /* [CP] Check Pods Manifest.lock */ = {
+		A5EF01BE68AC97FF3D498A5A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -449,7 +449,7 @@
 		};
 		66427A1A24F2674300D08F43 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B37EF362280BB931D22853E6 /* Pods-Dory.debug.xcconfig */;
+			baseConfigurationReference = E79960A20B36E998376F812D /* Pods-Dory.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -469,7 +469,7 @@
 		};
 		66427A1B24F2674300D08F43 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4732403254631ED82A2446CB /* Pods-Dory.release.xcconfig */;
+			baseConfigurationReference = DE99D265BA8049B2BC0C06B9 /* Pods-Dory.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

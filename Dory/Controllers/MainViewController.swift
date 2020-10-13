@@ -8,7 +8,6 @@
 
 import UIKit
 import RealmSwift
-import Then
 import SnapKit
 import SwiftFontName
 
@@ -459,12 +458,11 @@ class MainViewController: UIViewController {
     }
     
     func label(font: UIFont, numberOfLines: Int?, text: String?) -> UILabel {
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 20)).then {
-            $0.font = font
-            $0.numberOfLines = numberOfLines ?? 1
-            $0.textColor = K.colors.gunmetal
-            $0.text = text ?? "Label"
-        }
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
+        label.font = font
+        label.numberOfLines = numberOfLines ?? 1
+        label.textColor = K.colors.gunmetal
+        label.text = text ?? "Label"
         
         return label
     }
@@ -476,14 +474,13 @@ class MainViewController: UIViewController {
     func divide(stack: [UIView]) -> [UIView] {
         var dividedStack: [UIView] = []
         
-        let divider = UIView().then {
-            $0.backgroundColor = K.colors.gunmetal
+        let divider = UIView()
+        divider.backgroundColor = K.colors.gunmetal
             
-            $0.snp.makeConstraints { (make) in
+        divider.snp.makeConstraints { (make) in
                 make.height.equalTo(2)
                 make.width.equalTo(UIScreen.main.bounds.size.width).multipliedBy(0.75)
             }
-        }
         
         for i in stack {
             dividedStack.append(i)
@@ -492,7 +489,6 @@ class MainViewController: UIViewController {
         }
         
         dividedStack.remove(at: (dividedStack.count - 1))
-
         
         return dividedStack
     }

@@ -7,10 +7,10 @@ target 'Dory' do
 
   # Pods for Dory
 	
-	pod 'RealmSwift'
+	pod 'RealmSwift', '~> 5.5.0'
 	pod 'CircleProgressView', '~> 1.0'
   pod 'SnapKit', '~> 5.0.0'
-  pod 'Then'
+  pod 'DatePicker', '~> 1.3.0'
   pod 'SwiftFontName'
 
 end

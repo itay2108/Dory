@@ -8,95 +8,131 @@
 
 import UIKit
 import SnapKit
-import Then
 import SwiftFontName
 
 final class MainMenuButton: UIButton {
 
     let fontTypes = FontTypes()
     
-    var imageContainer: UIImageView!
+    //subviews
+    
+    lazy var imageContainer: UIImageView = {
+        let imgview = UIImageView()
+        imgview.tintColor = K.colors.gunmetal
+        
+        let img = UIImage()
+        if let img = UIImage(systemName: "clock.fill") {
+            imgview.image = img
+        }
+        
+        return imgview
+    }()
     
     public var image: UIImage? = UIImage(systemName: "clock.fill") {
         didSet {
-            layoutAccessories()
+            imageContainer.image = image
+            layoutSubviews()
         }
     }
     
-    var label = UILabel()
+    lazy var label: UILabel = {
+        let lbl = UILabel()
+        lbl.text = buttonTitle
+        lbl.font = fontTypes.h4_medium
+        return lbl
+    }()
     
     public var buttonTitle: String = "Button" {
         didSet {
-            layoutAccessories()
+            label.text = buttonTitle
+            layoutSubviews()
         }
     }
     
-    var detailContainer: UIImageView!
+    lazy var detailContainer: UIImageView = {
+        let imgview = UIImageView()
+        imgview.tintColor = K.colors.gunmetal
+        imgview.contentMode = .scaleAspectFit
+        
+        if let image = detail {
+            imgview.image = detail
+        }
+        
+        return imgview
+    }()
     
     public var detail: UIImage? = K.detail.chevron {
         didSet {
-            layoutAccessories()
+            detailContainer.image = detail
         }
     }
     
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        layoutAccessories()
-    }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        layoutAccessories()
+    lazy var separator: UIView = {
+        let separator = UIView()
+        separator.backgroundColor = K.colors.gunmetal
+        separator.alpha = 0.5
+        separator.layer.cornerRadius = 1
+        separator.tag = 200
+        
+        separator.isHidden = true
+        return separator
+    }()
+    
+    func setUpView() {
+        addSubviews()
+        setConstraintsToSubviews()
     }
     
-    func layoutAccessories() {
+    func addSubviews() {
+        self.addSubview(imageContainer)
+        self.addSubview(label)
+        self.addSubview(detailContainer)
         
-        for view in self.subviews {
-            view.removeFromSuperview()
+        self.addSubview(separator)
+    }
+    
+    func setConstraintsToSubviews() {
+        
+        imageContainer.snp.makeConstraints { (make) in
+            make.height.equalTo(self.snp.height).multipliedBy(0.32)
+            make.width.equalTo(self.snp.height).multipliedBy(0.32)
+            make.left.equalTo(self.snp.left).offset(24)
+            make.centerY.equalTo(self.snp.centerY)
         }
         
-        
-        imageContainer = UIImageView(image: image).then {
-            
-            $0.tintColor = K.colors.gunmetal
-            
-            self.addSubview($0) { (make) in
-                make.height.equalTo(self.snp.height).multipliedBy(0.32)
-                make.width.equalTo(self.snp.height).multipliedBy(0.32)
-                make.left.equalTo(self.snp.left).offset(24)
-                make.centerY.equalTo(self.snp.centerY)
-            }
-        }
-        
-        label = UILabel().then {
-            $0.text = buttonTitle
-            $0.font = UIFont(name: FontName.AvenirNextMedium, size: 13 * widthModifier)
-        }
-        
-
-        self.addSubview(label) { (make) in
+        label.snp.makeConstraints { (make) in
             make.left.equalTo(imageContainer.snp.right).offset(24).multipliedBy(widthModifier)
             make.width.equalTo(self.snp.width).multipliedBy(0.562)
             make.centerY.equalTo(self.snp.centerY)
             make.height.equalTo(self.snp.height).multipliedBy(0.45)
         }
         
-        detailContainer = UIImageView(image: detail).then {
-            
-            $0.contentMode = .scaleAspectFit
-            $0.tintColor = K.colors.gunmetal
-            
-            self.addSubview($0) { (make) in
-                make.height.equalTo(self.snp.height).multipliedBy(0.25)
-                make.width.equalTo(self.snp.height).multipliedBy(0.16)
-                make.right.equalTo(self.snp.right).offset(-24 * widthModifier)
-                make.centerY.equalTo(self.snp.centerY)
-            }
+        detailContainer.snp.makeConstraints { (make) in
+            make.height.equalTo(self.snp.height).multipliedBy(0.25)
+            make.width.equalTo(self.snp.height).multipliedBy(0.16)
+            make.right.equalTo(self.snp.right).offset(-24 * widthModifier)
+            make.centerY.equalTo(self.snp.centerY)
         }
-       
+        
+        separator.snp.makeConstraints { (make) in
+            make.height.equalTo(1)
+            make.width.equalTo(self.snp.width).multipliedBy(0.82)
+            make.bottom.equalTo(self.snp.bottom).offset(0.5)
+            make.centerX.equalTo(self.snp.centerX)
+        }
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setUpView()
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setUpView()
+    }
+    
+
     func accessory(image: UIImage, tint: UIColor) {
         
         for view in self.subviews {
@@ -148,28 +184,12 @@ final class MainMenuButton: UIButton {
     func separateBottom(active: Bool) {
         
         if active {
-            let _ = UIView().then {
-                $0.backgroundColor = K.colors.gunmetal
-                $0.alpha = 0.5
-                $0.layer.cornerRadius = 1
-                $0.tag = 200
-                
-                self.addSubview($0) { (make) in
-                    make.height.equalTo(1)
-                    make.width.equalTo(self.snp.width).multipliedBy(0.82)
-                    make.bottom.equalTo(self.snp.bottom).offset(0.5)
-                    make.centerX.equalTo(self.snp.centerX)
-                }
-            }
+            separator.isHidden = false
             self.clipsToBounds = false
         } else {
-            for view in self.subviews {
-                if view.tag == 200 {
-                    view.removeFromSuperview()
-                }
-            }
+            separator.isHidden = true
+            self.clipsToBounds = true
         }
-
         self.layoutSubviews()
     }
     
