@@ -11,7 +11,6 @@ import SnapKit
 
 final class BackButton: UIButton {
 
-    private let widthModifier: CGFloat = UIScreen.main.bounds.size.width / 375
     private var imageContainer: UIImageView = UIImageView()
     
     required init?(coder aDecoder: NSCoder) {

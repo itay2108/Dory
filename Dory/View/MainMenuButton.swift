@@ -12,9 +12,7 @@ import Then
 import SwiftFontName
 
 final class MainMenuButton: UIButton {
-    
-    //        let heightModifier: CGFloat = UIScreen.main.bounds.size.height / 812
-    let widthModifier: CGFloat = UIScreen.main.bounds.size.width / 375
+
     let fontTypes = FontTypes()
     
     var imageContainer: UIImageView!

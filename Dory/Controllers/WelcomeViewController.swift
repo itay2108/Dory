@@ -11,10 +11,7 @@ import SnapKit
 
 class WelcomeViewController: UIViewController {
     
-    let heightModifier: CGFloat = UIScreen.main.bounds.size.height / 812
-    let widthModifier: CGFloat = UIScreen.main.bounds.size.width / 375
     let fontTypes = FontTypes()
-    
     
     
     private lazy var mainHeading: UILabel = {

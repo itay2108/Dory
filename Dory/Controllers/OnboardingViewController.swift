@@ -12,8 +12,6 @@ import RealmSwift
 
 class OnboardingViewController: UIViewController {
 
-    let heightModifier: CGFloat = UIScreen.main.bounds.size.height / 812
-    let widthModifier: CGFloat = UIScreen.main.bounds.size.width / 375
     let fontTypes = FontTypes()
     
     let realm = try! Realm()
@@ -123,10 +121,9 @@ class OnboardingViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.view.backgroundColor = .white
-        datePicker.delegate = self
         
-        addStaticSubviews()
-        addConstraintsForAllSubviews()
+        addSubviews()
+        setConstraintsForSubviews()
         
         self.navigationItem.leftBarButtonItems = []
         self.navigationItem.hidesBackButton = true
@@ -135,7 +132,7 @@ class OnboardingViewController: UIViewController {
     
     //MARK: - view layout
     
-    private func addStaticSubviews() {
+    private func addSubviews() {
         
         //titles
         
@@ -163,7 +160,7 @@ class OnboardingViewController: UIViewController {
     }
     
     
-    private func addConstraintsForAllSubviews() {
+    private func setConstraintsForSubviews() {
         
         //titles
         
@@ -286,6 +283,7 @@ class OnboardingViewController: UIViewController {
     
     @objc func datePickerTapped() {
         //open calendar
+        print("Date picker tapped")
     }
     
 }

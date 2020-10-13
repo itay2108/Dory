@@ -26,9 +26,7 @@ class MainViewController: UIViewController {
     private var cycleModel = CycleModel()
     
     private var fontTypes = FontTypes()
-    
-    let heightModifier: CGFloat = UIScreen.main.bounds.size.height / 812
-    let widthModifier: CGFloat = UIScreen.main.bounds.size.width / 375
+
     
     //UI elements
     

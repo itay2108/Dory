@@ -11,28 +11,22 @@ import SnapKit
 
 public class DatePicker: UIView {
     
-    private let heightModifier: CGFloat = UIScreen.main.bounds.size.height / 812
-    private let widthModifier: CGFloat = UIScreen.main.bounds.size.width / 375
-    
     private let fontTypes = FontTypes()
+    
+    //view properties
     
     var tint: UIColor? = K.colors.sizzlingRed {
         didSet {
-            layoutAccessories()
+            setConstraintsToSubviews()
         }
     }
     
-    var detail = UIImageView(image: UIImage(systemName: "calendar")) {
-        didSet {
-            layoutAccessories()
-        }
-    }
+    //subviews
     
-    //button
-    
-    var trigger = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
-    
-    //label
+    lazy var trigger : UIButton = {
+        return UIButton()
+    }()
+
     
     lazy var dateLabel: DateLabel = {
         let label = DateLabel()
@@ -42,20 +36,36 @@ public class DatePicker: UIView {
         return label
     }()
 
+    var detail: UIImageView = {
+        let imgview = UIImageView()
+        let image = UIImage(systemName: "calendar")
+        imgview.contentMode = .scaleAspectFit
+        guard image != nil else { return imgview }
+        imgview.image = image
+        return imgview
+    }()
+    
+    private func setUpView() {
+        addSubviews()
+        setConstraintsToSubviews()
+    }
+    
+    private func addSubviews() {
+        
+        self.addSubview(dateLabel)
+        self.addSubview(trigger)
+        self.addSubview(detail)
+        
+    }
+    
     //main func to layout custom subviews
     
-    private func layoutAccessories() {
-        
-        for view in self.subviews {
-            view.removeFromSuperview()
-        }
-        
+    private func setConstraintsToSubviews() {
+
         self.layer.cornerRadius = 8
         self.backgroundColor = K.colors.aliceBlue
         
         //add label
-        
-        self.addSubview(dateLabel)
         
         dateLabel.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(4 * heightModifier)
@@ -77,9 +87,6 @@ public class DatePicker: UIView {
             make.right.equalToSuperview().offset(-14 * widthModifier)
         }
         
-        //add button to trigger action on tap
-        self.addSubview(trigger)
-        trigger.backgroundColor = .green
         
         trigger.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
@@ -93,15 +100,13 @@ public class DatePicker: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setNeedsLayout()
-        self.isUserInteractionEnabled = false
-        layoutAccessories()
+        setUpView()
     }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         setNeedsLayout()
-        self.isUserInteractionEnabled = false
-        layoutAccessories()
+        setUpView()
     }
 
 }

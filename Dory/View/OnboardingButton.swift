@@ -12,7 +12,6 @@ import SwiftFontName
 
 class OnboardingButton: CRButton {
 
-    let widthModifier: CGFloat = UIScreen.main.bounds.size.width / 375
     let fontTypes = FontTypes()
 
     func layoutAccessories() {

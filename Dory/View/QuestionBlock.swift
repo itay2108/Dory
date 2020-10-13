@@ -10,9 +10,7 @@ import UIKit
 import RealmSwift
 
 class QuestionBlock: UIView {
-    
-    let heightModifier: CGFloat = UIScreen.main.bounds.size.height / 812
-    let widthModifier: CGFloat = UIScreen.main.bounds.size.width / 375
+
     let fontTypes = FontTypes()
     
     var realmTarget: Any?

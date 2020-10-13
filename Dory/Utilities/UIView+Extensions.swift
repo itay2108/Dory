@@ -11,6 +11,18 @@ import SnapKit
 
 public extension UIView {
     
+    var widthModifier: CGFloat {
+        get {
+            return UIScreen.main.bounds.size.height / 812
+        }
+    }
+    
+    var heightModifier: CGFloat {
+        get {
+            return UIScreen.main.bounds.size.width / 375
+        }
+    }
+    
     func circlize() {
         self.layer.masksToBounds = false
         self.layer.cornerRadius = self.frame.size.width / 2
@@ -53,5 +65,20 @@ extension Date {
     func at(hour: Int) -> Date? {
         let calendar = Calendar.current
         return calendar.date(bySettingHour: hour, minute: 0, second: 0, of: self)
+    }
+}
+
+extension UIViewController {
+    
+    var widthModifier: CGFloat {
+        get {
+            return UIScreen.main.bounds.size.height / 812
+        }
+    }
+    
+    var heightModifier: CGFloat {
+        get {
+            return UIScreen.main.bounds.size.width / 375
+        }
     }
 }
