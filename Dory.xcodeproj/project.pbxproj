@@ -22,6 +22,8 @@
 		667914AC252B78FC001A5730 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667914AB252B78FC001A5730 /* Preferences.swift */; };
 		667914AF252BA3FF001A5730 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667914AE252BA3FF001A5730 /* OnboardingViewController.swift */; };
 		667914B7252F3446001A5730 /* OnboardingNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667914B6252F3446001A5730 /* OnboardingNavigationController.swift */; };
+		66866FC525346E1500329ADC /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66866FC425346E1500329ADC /* DatePicker.swift */; };
+		66866FE42535AA5D00329ADC /* DateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66866FE32535AA5D00329ADC /* DateLabel.swift */; };
 		668A1B792525E1460043A9EE /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668A1B782525E1460043A9EE /* WelcomeViewController.swift */; };
 		668A1B7E2525E4A00043A9EE /* OnboardingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668A1B7D2525E4A00043A9EE /* OnboardingButton.swift */; };
 		669994962504479F00AFC1E8 /* FontTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669994952504479F00AFC1E8 /* FontTypes.swift */; };
@@ -51,6 +53,8 @@
 		667914AB252B78FC001A5730 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		667914AE252BA3FF001A5730 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		667914B6252F3446001A5730 /* OnboardingNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingNavigationController.swift; sourceTree = "<group>"; };
+		66866FC425346E1500329ADC /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
+		66866FE32535AA5D00329ADC /* DateLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateLabel.swift; sourceTree = "<group>"; };
 		668A1B782525E1460043A9EE /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		668A1B7D2525E4A00043A9EE /* OnboardingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingButton.swift; sourceTree = "<group>"; };
 		669994952504479F00AFC1E8 /* FontTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTypes.swift; sourceTree = "<group>"; };
@@ -159,6 +163,8 @@
 				66F439D42533A9B8007BA2F2 /* OnboardingChoiceButton.swift */,
 				66E9C2382531DD8400A07380 /* BackButton.swift */,
 				66242CB4253203B800F8543C /* QuestionBlock.swift */,
+				66866FC425346E1500329ADC /* DatePicker.swift */,
+				66866FE32535AA5D00329ADC /* DateLabel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -295,6 +301,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66866FE42535AA5D00329ADC /* DateLabel.swift in Sources */,
 				668A1B7E2525E4A00043A9EE /* OnboardingButton.swift in Sources */,
 				66427A0D24F2674200D08F43 /* MainViewController.swift in Sources */,
 				66427A0924F2674200D08F43 /* AppDelegate.swift in Sources */,
@@ -313,6 +320,7 @@
 				66A3B30925156954001FB0DF /* MainTabBarController.swift in Sources */,
 				6673FD4B24FFC46E00C4D53E /* CRButton.swift in Sources */,
 				66F0E74124F7FE8000556C59 /* Cycle.swift in Sources */,
+				66866FC525346E1500329ADC /* DatePicker.swift in Sources */,
 				6650416F2513C24100011D38 /* K.swift in Sources */,
 				66A3B30C251569E8001FB0DF /* CalendarViewController.swift in Sources */,
 				66427A0B24F2674200D08F43 /* SceneDelegate.swift in Sources */,

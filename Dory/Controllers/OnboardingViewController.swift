@@ -90,6 +90,20 @@ class OnboardingViewController: UIViewController {
         return btn
     }()
     
+    //question 2
+    private lazy var blockTwo: QuestionBlock = {
+        let block = QuestionBlock(frame: .zero, target: cycleModel.currentCycle?.state)
+        block.questionTitle = "When did you insert it?"
+        return block
+    }()
+    
+    private lazy var datePicker: DatePicker = {
+        let picker = DatePicker()
+        picker.trigger.isEnabled = true
+        picker.trigger.addTarget(self, action: #selector(datePickerTapped), for: .touchUpInside)
+        return picker
+    }()
+    
     
     //bottom part
     
@@ -109,6 +123,7 @@ class OnboardingViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.view.backgroundColor = .white
+        datePicker.delegate = self
         
         addStaticSubviews()
         addConstraintsForAllSubviews()
@@ -118,13 +133,18 @@ class OnboardingViewController: UIViewController {
 
     }
     
+    //MARK: - view layout
+    
     private func addStaticSubviews() {
+        
+        //titles
         
         self.view.addSubview(topStackView)
         
         topStackView.addArrangedSubview(backButton)
         topStackView.addArrangedSubview(mainHeading)
         
+        //question 1
         self.view.addSubview(secondaryHeading)
         
         self.view.addSubview(blockOne)
@@ -134,6 +154,10 @@ class OnboardingViewController: UIViewController {
         blockOne.answerAreaContainer.addSubview(blockOneAnswerStackView)
         blockOneAnswerStackView.addArrangedSubview(choiceBtnYes)
         blockOneAnswerStackView.addArrangedSubview(choiceBtnNo)
+        
+        //question 2
+        self.view.addSubview(blockTwo)
+        blockTwo.answerAreaContainer.addSubview(datePicker)
         
         self.view.addSubview(continueButton)
     }
@@ -183,7 +207,22 @@ class OnboardingViewController: UIViewController {
             make.height.equalToSuperview().multipliedBy(0.9)
         }
         
+        //question 2
+        blockTwo.snp.makeConstraints { (make) in
+            make.left.equalToSuperview()
+            make.height.equalTo(90 * heightModifier)
+            make.top.equalTo(blockOne.snp.bottom).offset(40 * heightModifier)
+            make.right.equalToSuperview()
+        }
         
+        datePicker.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(28 * widthModifier)
+            make.top.equalToSuperview()
+            make.height.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.5).offset(22)
+        }
+        
+        //bottom
         continueButton.snp.makeConstraints { (make) in
             make.bottom.equalToSuperview().offset(-64 * heightModifier)
             make.centerX.equalToSuperview()
@@ -195,10 +234,9 @@ class OnboardingViewController: UIViewController {
         
     }
     
+    //MARK: - button targets
     
-    @objc func continueBtnPressed() {
-        //push next vc here
-    }
+
     
     @objc func backButtonPressed() {
         self.navigationController?.popViewController(animated: true)
@@ -241,5 +279,13 @@ class OnboardingViewController: UIViewController {
         
 
      }
-
+    
+    @objc func continueBtnPressed() {
+        //push next vc here
+    }
+    
+    @objc func datePickerTapped() {
+        //open calendar
+    }
+    
 }
