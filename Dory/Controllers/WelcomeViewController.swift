@@ -13,7 +13,6 @@ class WelcomeViewController: UIViewController {
     
     let fontTypes = FontTypes()
     
-    
     private lazy var mainHeading: UILabel = {
         let hdg = UILabel(frame: .zero)
         hdg.font = fontTypes.h1
@@ -48,6 +47,8 @@ class WelcomeViewController: UIViewController {
         return btn
     }()
     
+    private lazy var calendar = UICalendarView(baseDate: Date())
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,13 +64,15 @@ class WelcomeViewController: UIViewController {
         self.view.addSubview(vcArtwork)
         
         self.view.addSubview(beginButton)
+        
+        self.view.addSubview(calendar)
     }
     
     
     private func addConstraintsForAllSubviews() {
         
         mainHeading.snp.makeConstraints { (make) in
-            make.top.equalTo(view).offset(72 * heightModifier)
+            make.top.equalTo(safeAreaTop).offset(-12 * heightModifier)
             make.left.equalToSuperview().offset(24)
             make.height.equalTo(mainHeading.font.pointSize + 4)
         }
@@ -87,12 +90,18 @@ class WelcomeViewController: UIViewController {
         }
         
         beginButton.snp.makeConstraints { (make) in
-            make.bottom.equalToSuperview().offset(-64 * heightModifier)
+            make.bottom.equalTo(safeAreaBottom).offset(-32 * heightModifier)
             make.centerX.equalToSuperview()
             make.leading.equalToSuperview().offset(30 * widthModifier)
             make.height.equalTo(56 * heightModifier)
             
             self.beginButton.layer.cornerRadius = 14
+        }
+        
+        calendar.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.left.equalToSuperview().offset(24)
+            make.height.equalToSuperview().multipliedBy(0.5)
         }
     }
     

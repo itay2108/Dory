@@ -95,14 +95,16 @@ class OnboardingViewController: UIViewController {
         return block
     }()
     
-    private lazy var datePicker: DatePicker = {
-        let picker = DatePicker()
+    private lazy var datePicker: DatePickerLabel = {
+        let picker = DatePickerLabel()
         picker.trigger.isEnabled = true
         picker.trigger.addTarget(self, action: #selector(datePickerTapped), for: .touchUpInside)
         return picker
     }()
     
-    
+    //calendar card
+    private lazy var calendarContainer = CardView()
+
     //bottom part
     
     private lazy var continueButton: OnboardingButton = {
@@ -118,6 +120,8 @@ class OnboardingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(heightModifier, widthModifier)
 
         // Do any additional setup after loading the view.
         self.view.backgroundColor = .white
@@ -157,6 +161,7 @@ class OnboardingViewController: UIViewController {
         blockTwo.answerAreaContainer.addSubview(datePicker)
         
         self.view.addSubview(continueButton)
+        
     }
     
     
@@ -165,7 +170,7 @@ class OnboardingViewController: UIViewController {
         //titles
         
         topStackView.snp.makeConstraints { (make) in
-            make.top.equalTo(view).offset(72 * heightModifier)
+            make.top.equalTo(safeAreaTop).offset(-12 * heightModifier)
             make.left.equalToSuperview().offset(17 * widthModifier)
             make.height.equalTo(mainHeading.font.pointSize + 4)
             make.centerX.equalToSuperview()
@@ -185,8 +190,12 @@ class OnboardingViewController: UIViewController {
         blockOne.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
             make.height.equalTo(90 * heightModifier)
-            make.top.equalTo(secondaryHeading.snp.bottom).offset(40 * heightModifier)
+            make.top.equalTo(secondaryHeading.snp.bottom).offset(32 * heightModifier)
             make.right.equalToSuperview()
+        }
+        
+        blockOne.titleLabel.snp.updateConstraints { (make) in
+            make.width.equalTo(blockOne.titleLabel.intrinsicContentSize.width)
         }
         
         blockOneAnswerStackView.snp.makeConstraints { (make) in
@@ -208,9 +217,14 @@ class OnboardingViewController: UIViewController {
         blockTwo.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
             make.height.equalTo(90 * heightModifier)
-            make.top.equalTo(blockOne.snp.bottom).offset(40 * heightModifier)
+            make.top.equalTo(blockOne.snp.bottom).offset(32 * heightModifier)
             make.right.equalToSuperview()
         }
+        
+        blockTwo.titleLabel.snp.updateConstraints { (make) in
+            make.width.equalTo(blockTwo.titleLabel.intrinsicContentSize.width)
+        }
+        
         
         datePicker.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(28 * widthModifier)
@@ -218,15 +232,16 @@ class OnboardingViewController: UIViewController {
             make.height.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.5).offset(22)
         }
-        
+
+            
         //bottom
         continueButton.snp.makeConstraints { (make) in
-            make.bottom.equalToSuperview().offset(-64 * heightModifier)
+            make.bottom.equalTo(safeAreaBottom).offset(-32 * heightModifier)
             make.centerX.equalToSuperview()
             make.leading.equalToSuperview().offset(30 * widthModifier)
             make.height.equalTo(56 * heightModifier)
             
-            self.continueButton.layer.cornerRadius = 14
+            self.continueButton.layer.cornerRadius = 14 * heightModifier
         }
         
     }
@@ -273,7 +288,6 @@ class OnboardingViewController: UIViewController {
                 make.width.equalTo(nonSelectedWidth)
             }
         }
-        
 
      }
     
@@ -284,6 +298,15 @@ class OnboardingViewController: UIViewController {
     @objc func datePickerTapped() {
         //open calendar
         print("Date picker tapped")
+        
+        self.view.addSubview(calendarContainer)
+        
+        calendarContainer.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        calendarContainer.animateViewIn()
+
     }
     
 }

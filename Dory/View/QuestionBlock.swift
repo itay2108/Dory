@@ -10,42 +10,71 @@ import UIKit
 import RealmSwift
 
 class QuestionBlock: UIView {
+    
+    //parameters
 
     let fontTypes = FontTypes()
     
     var realmTarget: Any?
     
     var isAnswered: Bool = false
+    var answer: Any? 
+    
+    //views
     
     var questionTitle: String? {
         didSet {
-            layoutAccessories()
+            titleLabel.text = questionTitle
         }
     }
+    
+    lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Question Title!!!!!"
+        label.font = fontTypes.h2_medium
+        label.textColor = K.colors.gunmetal
+        return label
+    }()
     
     var detailTitle: String? {
         didSet {
-            layoutAccessories()
+            detailLabel.text = detailTitle
         }
     }
     
-    var completionDetail = UIImageView()
+    lazy var detailLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Detail Title"
+        label.font = fontTypes.h5
+        label.textColor = K.colors.gunmetal
+        return label
+    }()
+    
+    lazy var completionDetail: UIImageView = {
+       let view = UIImageView()
+        view.image = UIImage(systemName: "checkmark.circle")
+        view.tintColor = K.colors.green
+        view.isHidden = true
+        return view
+    }()
     
     var answerAreaContainer = UIView()
     
-    private func layoutAccessories() {
-        
-        for view in self.subviews {
-            view.removeFromSuperview()
-        }
-        
-        //title
-        let titleLabel = UILabel()
-        titleLabel.font = fontTypes.h2_medium
-        titleLabel.textColor = K.colors.gunmetal
-        titleLabel.text = questionTitle
-        
+    private func setUpView() {
+        addSubviews()
+        setConstraintsForSubviews()
+    }
+    
+    private func addSubviews() {
         self.addSubview(titleLabel)
+        self.addSubview(completionDetail)
+        
+        self.addSubview(detailLabel)
+        
+        self.addSubview(answerAreaContainer)
+    }
+    
+    private func setConstraintsForSubviews() {
         
         titleLabel.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(10 * heightModifier)
@@ -54,29 +83,12 @@ class QuestionBlock: UIView {
             make.width.equalTo(titleLabel.intrinsicContentSize.width)
         }
         
-        //checkmark
-        completionDetail = UIImageView(image: UIImage(systemName: "checkmark.circle"))
-        completionDetail.tintColor = K.colors.green
-        
-        self.addSubview(completionDetail)
-        
         completionDetail.snp.makeConstraints { (make) in
             make.left.equalTo(titleLabel.snp.right).offset(10 * widthModifier)
             make.height.equalTo(titleLabel.snp.height)
             make.width.equalTo(completionDetail.snp.height)
             make.centerY.equalTo(titleLabel.snp.centerY)
         }
-        
-        completionDetail.isHidden = true
-        
-        //detail
-        
-        let detailLabel = UILabel()
-        detailLabel.font = fontTypes.h5
-        detailLabel.textColor = K.colors.gunmetal
-        detailLabel.text = questionTitle
-        
-        self.addSubview(detailLabel)
         
         detailLabel.snp.makeConstraints { (make) in
             make.left.equalTo(titleLabel.snp.left)
@@ -86,12 +98,9 @@ class QuestionBlock: UIView {
                 make.height.equalTo(titleLabel.font.pointSize + 2)
             }
             
-            make.width.equalTo(titleLabel.intrinsicContentSize.width)
+            make.width.equalTo(detailLabel.intrinsicContentSize.width)
             
         }
-        
-        // answer part
-        self.addSubview(answerAreaContainer)
         
         answerAreaContainer.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
@@ -106,7 +115,7 @@ class QuestionBlock: UIView {
         super.init(frame: frame)
         
         realmTarget = target
-        layoutAccessories()
+        setUpView()
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -1,8 +1,6 @@
 PODS:
   - CircleProgressView (1.2.0)
-  - DatePicker (1.3.1):
-    - Extended
-  - Extended (1.0.5)
+  - JTAppleCalendar (8.0.3)
   - Realm (5.5.0):
     - Realm/Headers (= 5.5.0)
   - Realm/Headers (5.5.0)
@@ -13,7 +11,7 @@ PODS:
 
 DEPENDENCIES:
   - CircleProgressView (~> 1.0)
-  - DatePicker (~> 1.3.0)
+  - JTAppleCalendar
   - RealmSwift (~> 5.5.0)
   - SnapKit (~> 5.0.0)
   - SwiftFontName
@@ -21,8 +19,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - CircleProgressView
-    - DatePicker
-    - Extended
+    - JTAppleCalendar
     - Realm
     - RealmSwift
     - SnapKit
@@ -30,13 +27,12 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   CircleProgressView: 6b5b091d59dc5e5d2fda84e637a40498cdc39937
-  DatePicker: 05ddbd2b57d00ce6f44c1f0611ced32f948d33a6
-  Extended: c463225e0c29b2823847866c1b106827772ac678
+  JTAppleCalendar: 932cadea40b1051beab10f67843451d48ba16c99
   Realm: fb399d76f44042e5cdfc630f33828fdb4d077345
   RealmSwift: 3b7e62356207ef16d34de4e55d475163bd2062bb
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftFontName: 08aaa0143dadc7753587c4317d9e8a5f2c2418b5
 
-PODFILE CHECKSUM: ee1b8339f204ef74553ff4b93d257d13bd029bdb
+PODFILE CHECKSUM: 4fabda99a1c485d431dd6c92395b895de1ff5a12
 
 COCOAPODS: 1.10.0.rc.1
